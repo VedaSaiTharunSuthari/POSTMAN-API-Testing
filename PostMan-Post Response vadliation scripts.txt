@@ -1,0 +1,696 @@
+pm.test("status code is 200", () =>{
+  pm.response.to.have.status(200);
+});
+
+pm.test("Susccessful GET request", () =>{
+  pm.expect(pm.response.code).to.be.oneOf([200,201]);
+}); 
+
+pm.test("Content-Type header is present", () =>{
+  pm.response.to.have.header("Content-Type");
+});
+
+pm.test("Content-Type header is application/json", () =>{
+  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');
+});
+
+pm.test("Content-Length header is 2766", () =>{
+  pm.expect(pm.response.headers.get('Content-Length')).to.eql('2766');
+});
+
+pm.test("Cookie 'language' is present", () =>{
+ pm.expect(pm.cookies.has('language')).to.be.false;
+});
+
+pm.test("Response time is less than 200ms", () =>{
+  pm.expect(pm.response.responseTime).to.be.below(200);
+});
+
+const jsonData = pm.response.json();
+pm.test("Test Data type of the response", () =>{
+  pm.expect(jsonData).to.be.an("array");
+  pm.expect(jsonData[0].name).to.be.a("string");
+});
+pm.test("Each employee object has all the required properties", () => {
+  const jsonData = pm.response.json();
+  jsonData.forEach((employee) => {
+    pm.expect(employee).to.have.property('id').that.is.a('string');
+    pm.expect(employee).to.have.property('name').that.is.a('string');
+    pm.expect(employee).to.have.property('location').that.is.a('string');
+    pm.expect(employee).to.have.property('phone').that.is.a('string');
+    pm.expect(employee).to.have.property('designation').that.is.a('string');
+    pm.expect(employee).to.have.property('skills').that.is.an('array');
+  });
+});
+// Validating JSON fields in response
+pm.test("values of  fields in response"),() => {
+    var jsonData = pm.response.json();
+    pm.expect(jsonData.currency).to.eql("INR");
+    pm.expect(jsonData.location).to.eql("india");
+    pm.expect(jsonData.phone[0]).to.eql("8008224084");
+    pm.expect(jsonData.designation[0]).to.eql("tester");
+    pm.expect(jsonData.skills).to.eql("JIRA");
+}
+//JSON schema validation
+var schema={
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "array",
+  "items": [
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "designation": {
+          "type": "string"
+        },
+        "skills": {
+          "type": "array",
+          "items": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "location",
+        "phone",
+        "designation",
+        "skills"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "designation": {
+          "type": "string"
+        },
+        "skills": {
+          "type": "array",
+          "items": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "location",
+        "phone",
+        "designation",
+        "skills"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "designation": {
+          "type": "string"
+        },
+        "skills": {
+          "type": "array",
+          "items": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "location",
+        "phone",
+        "designation",
+        "skills"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "designation": {
+          "type": "string"
+        },
+        "skills": {
+          "type": "array",
+          "items": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "location",
+        "phone",
+        "designation",
+        "skills"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "designation": {
+          "type": "string"
+        },
+        "skills": {
+          "type": "array",
+          "items": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "location",
+        "phone",
+        "designation",
+        "skills",
+        "id"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "designation": {
+          "type": "string"
+        },
+        "skills": {
+          "type": "array",
+          "items": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "location",
+        "phone",
+        "designation",
+        "skills"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "designation": {
+          "type": "string"
+        },
+        "skills": {
+          "type": "array",
+          "items": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "location",
+        "phone",
+        "designation",
+        "skills"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "designation": {
+          "type": "string"
+        },
+        "skills": {
+          "type": "array",
+          "items": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "location",
+        "phone",
+        "designation",
+        "skills"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "designation": {
+          "type": "string"
+        },
+        "skills": {
+          "type": "array",
+          "items": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "location",
+        "phone",
+        "designation",
+        "skills"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "designation": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "language": {
+          "type": "string"
+        },
+        "skills": {
+          "type": "array",
+          "items": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "location",
+        "phone",
+        "designation",
+        "currency",
+        "language",
+        "skills"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "designation": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "language": {
+          "type": "string"
+        },
+        "skills": {
+          "type": "array",
+          "items": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "location",
+        "phone",
+        "designation",
+        "currency",
+        "language",
+        "skills"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "designation": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "language": {
+          "type": "string"
+        },
+        "skills": {
+          "type": "array",
+          "items": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "location",
+        "phone",
+        "designation",
+        "currency",
+        "language",
+        "skills"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "designation": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "language": {
+          "type": "string"
+        },
+        "skills": {
+          "type": "array",
+          "items": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "location",
+        "phone",
+        "designation",
+        "currency",
+        "language",
+        "skills"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "designation": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "language": {
+          "type": "string"
+        },
+        "skills": {
+          "type": "array",
+          "items": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "location",
+        "phone",
+        "designation",
+        "currency",
+        "language",
+        "skills"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "designation": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "language": {
+          "type": "string"
+        },
+        "skills": {
+          "type": "array",
+          "items": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "location",
+        "phone",
+        "designation",
+        "currency",
+        "language",
+        "skills"
+      ]
+    }
+  ]
+}
+pm.test('schema is valid', () =>{
+    pm.expect(tv4.validate(jsonData, schema)).to.be.true;
+});
