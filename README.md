@@ -109,6 +109,42 @@ pm.collectionVariables.unset("students_collection","1");
 • Understood the scope and lifetime of different variable types.
 • Practiced dynamic value assignment and cleanup using scripts.
 • Improved test control by managing variables in script logic.
+----------
+
+- **API Chaining using Real-Time APIs**
+  - Captured response body
+  - Created and managed variables dynamically using pre-request and test scripts
+  - Cleared variables post-response to maintain a clean test environment
+
+## Pre-Request scripts for chaining APIS    
+//random string to create unique user each time
+var random=Math.random().toString(36).substring(2);
+
+//variables
+var useremail="jet"+random+"@gmail.com";
+var username = "jet" + random;
+
+//environment variables
+pm.environment.set("user_env", useremail);
+pm.environment.set("name_env", username);
+
+## Post-Response scripts for chaining APIS
+//to capture resposne body 
+var jsonData=JSON.parse(responseBody);
+
+//to extract id
+pm.environment.set("userid_env",jsonData.id);
+
+- **Authorization Implementation**
+  - Applied authorization at both **collection** and **request** levels
+
+#### Key Takeaways:
+- Chaining APIs allows for end-to-end workflow simulation
+- Dynamic variable management improves flexibility and efficiency
+- Centralized authorization setup enhances security and reusability
+
+
+
 
 
 
