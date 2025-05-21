@@ -111,6 +111,8 @@ pm.collectionVariables.unset("students_collection","1");
 • Improved test control by managing variables in script logic.
 ----------
 
+Date: [21/05/2025]
+
 - **API Chaining using Real-Time APIs**
   - Captured response body
   - Created and managed variables dynamically using pre-request and test scripts
