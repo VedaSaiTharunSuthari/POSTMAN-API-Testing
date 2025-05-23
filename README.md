@@ -31,8 +31,6 @@ This repo contains my practice work for learning API testing manually using Post
 
 # Scripts & Variables in Postman
 
-Date: [20/05/2025]
-
 ## Scripts in Postman
 
 Today I explored how to use scripts in Postman to automate API workflows and validations.
@@ -111,9 +109,7 @@ pm.collectionVariables.unset("students_collection","1");
 • Improved test control by managing variables in script logic.
 ----------
 
-Date: [21/05/2025]
-
-- **API Chaining using Real-Time APIs**
+**API Chaining using Real-Time APIs**
   - Captured response body
   - Created and managed variables dynamically using pre-request and test scripts
   - Cleared variables post-response to maintain a clean test environment
@@ -144,6 +140,24 @@ pm.environment.set("userid_env",jsonData.id);
 - Chaining APIs allows for end-to-end workflow simulation
 - Dynamic variable management improves flexibility and efficiency
 - Centralized authorization setup enhances security and reusability
+
+
+# 📚 API Testing with Postman – Data-Driven Testing & Chaining
+
+This repository contains a Postman project demonstrating real-world API testing using a live **Books API**. The focus is on **Data-Driven Testing**, **Chaining Requests**, and validating different API operations (POST, GET, DELETE).
+
+## ✅ Features
+
+- **Data-Driven Testing** using external files (JSON & CSV)
+- **POST**, **GET**, and **DELETE** requests to interact with the Books API
+- **Chaining**: Passing dynamic values (e.g., Book ID) between requests
+- **Assertions & Validations** to verify response codes, body content, and headers
+- **Organized Collections** and **Environment Variables** for reusability
+
+
+
+
+
 
 
 
