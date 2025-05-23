@@ -142,11 +142,11 @@ pm.environment.set("userid_env",jsonData.id);
 - Centralized authorization setup enhances security and reusability
 
 
-# 📚 API Testing with Postman – Data-Driven Testing & Chaining
+# API Testing with Postman – Data-Driven Testing & Chaining
 
 This repository contains a Postman project demonstrating real-world API testing using a live **Books API**. The focus is on **Data-Driven Testing**, **Chaining Requests**, and validating different API operations (POST, GET, DELETE).
 
-## ✅ Features
+## Features
 
 - **Data-Driven Testing** using external files (JSON & CSV)
 - **POST**, **GET**, and **DELETE** requests to interact with the Books API
