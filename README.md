@@ -153,6 +153,80 @@ This repository contains a Postman project demonstrating real-world API testing 
 - **Chaining**: Passing dynamic values (e.g., Book ID) between requests
 - **Assertions & Validations** to verify response codes, body content, and headers
 - **Organized Collections** and **Environment Variables** for reusability
+---------------
+
+# API Testing Practice with Postman & Spring Boot
+
+This repository contains hands-on practice and learning exercises related to API testing using Postman, Spring Boot, Swagger, and cURL. It demonstrates practical knowledge of file upload APIs, various authentication mechanisms, and API documentation tools.
+
+---
+
+## Project Overview
+
+### File Upload API – Setup & Execution
+- Installed Java and set up a Spring Boot application using an executable JAR file.
+- Ran a local Spring Boot server hosting file upload endpoints.
+- Performed both **Single File Upload** and **Multiple File Upload** requests using Postman.
+- Tested various file types to validate correct API upload behavior and error handling.
+
+### Authentication Types Practiced in Postman
+- No Authentication (No Auth)
+- Basic Authentication
+- Bearer Token Authentication
+- API Key Authentication
+- Digest Authentication
+- OAuth 1.0 & OAuth 2.0
+- Gained practical understanding of when and how to use each authentication type.
+- Tested authentication workflows thoroughly using Postman.
+
+### Swagger & cURL Exploration
+- Explored Swagger API documentation to understand endpoint references and request/response schemas.
+- Executed cURL commands directly in the terminal and within Postman.
+- Practiced converting API requests between Postman format and cURL command line syntax.
+
+---
+
+## Tools & Technologies
+- **Java** (JDK 11+)
+- **Spring Boot** (for building and running the file upload API)
+- **Postman** (API testing and automation)
+- **Swagger** (API documentation)
+- **cURL** (command line HTTP requests)
+
+---
+
+## How to Run
+
+1. **Setup Java and Spring Boot:**
+   - Ensure Java is installed and configured on your machine.
+   - Run the Spring Boot application using the provided JAR file:
+     ```bash
+     java -jar file-upload-api.jar
+     ```
+
+2. **File Upload Testing:**
+   - Open Postman and import the collection for file upload.
+   - Execute Single and Multiple File Upload requests to `http://localhost:8080/upload`.
+   - Test different file types and observe responses.
+
+3. **Authentication Testing:**
+   - Use Postman to test various authentication types on sample endpoints.
+   - Configure authentication as per the request requirements.
+
+4. **Swagger & cURL:**
+   - Explore Swagger UI (if hosted) for API endpoint documentation.
+   - Execute API calls via cURL commands in terminal or convert Postman requests to cURL.
+
+---
+
+## Notes
+- This repository is for educational and practice purposes.
+- File upload API endpoints are running locally; ensure the Spring Boot app is active before sending requests.
+- Authentication examples cover a range of common mechanisms useful for real-world API testing.
+
+---
+
+
 
 
 
